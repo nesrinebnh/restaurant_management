@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Restaurant | Home</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styleCompany.css">
+	<link rel="stylesheet" href="css/fixed.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+	
+
+	<div class="wrapper">
+	   	<nav id="sidebar">
+	   		<ul class="list-unstyled components">
+	   			<li>
+	   				<a href="home.html">Home</a>
+	   			</li>
+	   			
+	   			<li>
+	   				<a href="stores.html">Stores</a>
+	   			</li>
+
+	   			<li>
+	   				<a href="category.html">Category</a>
+	   			</li>
+
+	   			<li>
+	   				<a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Product</a>
+	   				<ul class="collapse list-unstyled" id="productSubmenu">
+	   					<li >
+	   						<a href="addProduct.html">Add Product</a>
+	   					</li>
+	   					<li>
+	   						<a href="manageProduct.html">Manage Product</a>
+	   					</li>
+	   				</ul> 
+	   			</li>
+
+	   			<li class="active">
+	   				<a href="#ordersSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Orders</a>
+	   				<ul class="collapse list-unstyled" id="ordersSubmenu">
+	   					<li>
+	   						<a href="addOrder.html">Add order</a>
+	   					</li>
+	   					<li>
+	   						<a href="manageOrder.html">Manage order</a>
+	   					</li>
+	   				</ul> 
+	   			</li>
+
+	   			<li>
+	   				<a href="company_info.html">Company Info</a>
+	   			</li>
+
+	   			<li>
+	   				<a href="profile.html">Profile</a>
+	   			</li>
+
+	   			<li >
+	   				<a href="settings.html">Settings</a>
+	   			</li>
+
+	   			<li>
+	   				<a href="#" id="logout" onclick="logout();">Logout</a>
+	   			</li>
+	   		</ul>
+	   	</nav>
+   	
+	   	<div class="container content" >
+
+	   		<div class="card">
+			    <div class="card-header">Add Order</div>
+			    <div class="card-body">
+			    	<div class="row">
+					  <div class="col">
+					  	<p>Product</p>
+						<select name="product" id="product" class="form-control">
+							<option value="pro0" selected>Choose a product</option>
+						</select>
+							
+					  </div>
+					  <div class="col">
+					  	<p>QTY</p>
+					  	<input type="text" class="form-control" id="qty" placeholder="qty"  />
+					  </div>
+					  <div class="col">
+					  	<p>Rate</p>
+					  	<input type="text" class="form-control" id="rate" placeholder="rate"  />
+					  </div>
+					  <div class="col">
+					  	<p>Amount</p>
+					  	<input type="text" class="form-control" id="amount" placeholder="amount"  />
+					  </div>
+					</div>
+					<div style="margin-top: 5px;">
+						<p>Gross amount</p>
+					  	<input type="text" class="form-control" id="gross" placeholder="gross amount"  />
+					</div>
+					<div style="margin-top: 5px;">
+						<p>Vat %</p>
+					  	<input type="text" class="form-control" id="vat" placeholder="vat"  />
+					</div>
+					<div style="margin-top: 5px;">
+						<p>Discount</p>
+					  	<input type="text" class="form-control" id="discount" placeholder="discount"  />
+					</div>
+					<div style="margin-top: 5px;">
+						<p>Net amount</p>
+					  	<input type="text" class="form-control" id="net" placeholder="net amount"  />
+					</div>
+			    </div> 
+			    <div class="card-footer text-center">
+			    	<button type="submit" class="btn " id="ok_setting" onclick="upload();">ok</button>
+			    </div>
+			</div>
+<!--
+	   		<input type="file" onchange="previewFile()"><br>-->
+	   		
+			
+	   		
+	   	</div>	
+   </div>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyDrvnMS-SHyrnPPFcqYGdNK9dGbEKbchQ0",
+	    authDomain: "webtest-60e06.firebaseapp.com",
+	    databaseURL: "https://webtest-60e06.firebaseio.com",
+	    projectId: "webtest-60e06",
+	    storageBucket: "webtest-60e06.appspot.com",
+	    messagingSenderId: "29166512602",
+	    appId: "1:29166512602:web:df7e22aaddce162d"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+	<script>
+		var messagesRef = firebase.database().ref('food');
+		var profile ;
+		var apiResult = [];
+		messagesRef .on('value', function(snapshot) {
+		    snapshot.forEach(function(childSnapshot) {
+		      	var childData = childSnapshot.val();
+		      	var key = childSnapshot.key;
+		    	apiResult.push(childData.title);
+
+		  	});
+		  console.log("size "+apiResult.length);
+		  var container = document.getElementById('product');
+
+		  apiResult.forEach((result, idx) => {
+
+		    console.log(idx);
+		    // Create card element
+		    const card = document.createElement('div');
+		    card.classList = 'card-body';
+
+		    // Construct card content
+		    const content = `
+		    	<option value="pro${idx}">${result}</option>
+		    `;
+
+		    // Append newyly created card element to the container
+		    container.innerHTML += content;
+		  });
+
+		});
+
+		function upload(){
+	  		var status = document.getElementById("product");
+ 			var adminType = status.options[status.selectedIndex].text;
+ 			console.log(adminType);
+ 			
+		    send = {
+		    	
+		    	product : adminType,
+		    	qty : document.getElementById('qty').value,
+		    	rate : document.getElementById('rate').value,
+		    	amount: document.getElementById('amount').value,
+		    	gross : document.getElementById('gross').value ,
+		    	vat: document.getElementById('vat').value,
+		    	discount : document.getElementById('discount').value,
+		    	net: document.getElementById('net').value,
+		    };
+		    var key = document.getElementById('qty').value+ document.getElementById('rate').value;
+		  
+		     firebase.database().ref('order/').child(key.replace(".","")).set(send);
+
+		     	
+
+		     setTimeout(function(){ window.location.href = 'manageOrder.html'; }, 5000);
+	  	}
+	</script>
+    
+</body>
